@@ -1,0 +1,33 @@
+<ion-card-content class="no-padding">
+  <ion-grid class="no-padding">
+    <ion-row responsive-sm>
+      <ion-col width-35 class="no-padding">
+        <img class="thumbnailImg" src="{{ imgUrl }}" alt="">
+      </ion-col>
+      <ion-col>
+
+        <ion-list>
+          <ion-item text-wrap lines="none">
+            <h2><strong>{{ title }}</strong></h2>
+          </ion-item>
+
+          <ion-item lines="none">
+              <ion-icon name="calendar-outline"></ion-icon>&nbsp;{{ release | date: 'y' }}
+          </ion-item>
+
+          <ion-item lines="none">
+            <ion-icon name="thumbs-up-outline"></ion-icon>&nbsp;{{ popularity| number: '1.0-0' }}%
+          </ion-item>
+
+          <ion-item lines="none">
+            <ion-button *ngIf="isLoggedIn; else notLoggedIn" color="warning" shape="round" (click)="goToDetails(id)">Details</ion-button>
+            <ng-template #notLoggedIn>
+              <ion-button color="warning" shape="round" (click)="goToDetailsNotLoggedIn(id)">Details</ion-button>
+            </ng-template>
+          </ion-item>
+        </ion-list>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>   
+</ion-card-content>

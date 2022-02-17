@@ -1,0 +1,58 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start"><ion-back-button defaultHref="tabs/movies"></ion-back-button></ion-buttons>
+    <ion-title style="text-align: center">Movie Details</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- <ion-header collapse="condense">
+  <ion-toolbar>
+    <ion-buttons slot="start"><ion-back-button defaultHref="tabs/movies"></ion-back-button></ion-buttons>
+    <ion-title size="large">Movie Details</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+<!-- Page Content Below -->
+
+  
+<ion-content padding>
+  
+    <ion-card *ngIf="movieDetails">
+      <ion-card-header>
+        <ion-card-title style="text-align: center">
+          {{movieDetails.title}}
+        </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content style="text-align: center" >
+        <img  src="{{ imgUrl }}" alt="">
+
+        <ion-item align-item="center" lines="none">
+          <ion-icon name="calendar-clear" slot="start"></ion-icon>
+          <ion-label>&nbsp;{{movieDetails.release_date | date: 'MMMM d, y' }}</ion-label>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-icon name="hourglass-outline" slot="start"></ion-icon>
+          <ion-label>&nbsp;{{movieDetails.runtime}} mins</ion-label>
+        </ion-item>
+        
+        <ion-item lines="none">
+          <ion-icon name="film" slot="start"></ion-icon>
+          <ion-label text-wrap>&nbsp;{{movieDetails.overview}}</ion-label>
+        </ion-item>
+    
+
+        <ion-item lines="none">
+          <ion-button class="center" color="warning" shape="round" href="{{'https://www.imdb.com/title/' + movieDetails.imdb_id}}" target="_blank">IMDB</ion-button>
+          <ion-button class="center" color="warning" shape="round" *ngIf="isLoggedIn && !isFound" (click)="addMovie( movieDetails.id, movieDetails)">Add to My List</ion-button>
+
+          <!-- <ion-icon class="like-heart" [color]="liked ? 'danger' : ''" (click)="like()" name="heart" slot= "end"></ion-icon> -->
+        </ion-item>
+  
+      </ion-card-content>
+        
+    <!-- <pre>{{movieDetails | json}}</pre> -->
+  
+  <!-- End Page Content -->
+  </ion-card>
+</ion-content>  

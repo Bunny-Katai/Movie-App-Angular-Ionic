@@ -1,0 +1,44 @@
+<!-- Header -->
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <!-- <ion-buttons slot="start">
+      <ion-back-button (click)="onClickBackButton()" defaultHref="tabs/movies"></ion-back-button>
+    </ion-buttons> -->
+    <ion-title style="text-align: center;">{{pageTitle}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- iOS Header -->
+<!-- <ion-header collapse="condense">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button (click)="onClickBackButton()" defaultHref="tabs/movies"></ion-back-button>
+    </ion-buttons>
+    <ion-title size="large">{{pageTitle}}</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<!-- Search Bar -->
+<ion-searchbar placeholder="Gone with the Wind, Tom Cruise, Hayao Miyazaki, ..."
+  [(ngModel)]="queryText"
+  (ionChange)="search()"
+  debounce=1000>
+</ion-searchbar>
+
+<!-- Page Content Below -->
+<ion-content padding class="movieList-content">
+
+    <div *ngIf="movieList">
+      <ion-card  *ngFor="let movie of movieList">
+        <app-movie-card
+          [config]="config"
+          [title]="movie.title"
+          [id]="movie.id"
+          [release]="movie.release_date"
+          [popularity]="movie.popularity">
+        </app-movie-card>
+      </ion-card>
+    </div>
+
+</ion-content>
+<!-- End Page Content -->

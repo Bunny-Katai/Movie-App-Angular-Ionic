@@ -1,0 +1,15 @@
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+ion-content {
+   --background:none;
+   background:url("../../assets/background.jpg") no-repeat fixed center;
+   background-size: cover;  
+}
+.darkYellowText{
+    color: rgb(196, 107, 6);
+}
